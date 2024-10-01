@@ -20,7 +20,7 @@ app.use(bodyParser.json());
 
 // Connect to MongoDB
 mongoose.set('strictQuery', false);
-mongoose.connect('mongodb+srv://omarvenom22:JPZ4jK7U8zECbbxB@cluster0.p3oak.mongodb.net/', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb+srv://omarvenom22:JPZ4jK7U8zECbbxB@cluster0.p3oak.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('Connected to MongoDB'))
   .catch(err => console.error('Could not connect to MongoDB', err));
 
