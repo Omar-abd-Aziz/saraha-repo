@@ -5,24 +5,21 @@ const Saraha = require('../models/saraha');
 // Add a new Saraha document
 router.post('/add', async (req, res) => {
     try {
-        const { uid, username, date, numberToOrderBy } = req.body;
-        const newSaraha = new Saraha({ uid, username, date, numberToOrderBy });
+        const { uid, username, message, date, numberToOrderBy } = req.body;
+        const newSaraha = new Saraha({ uid, username, message, date, numberToOrderBy });
         const savedSaraha = await newSaraha.save();
         res.status(201).json(savedSaraha);
     } catch (error) {
         res.status(400).json({ message: 'Error adding Saraha', error });
-        console.log(error)
+        console.log(error);
     }
 });
-
-
-
 
 // Get all Saraha documents with pagination, sorting, search, and count
 router.get('/all', async (req, res) => {
     try {
         const { page = 1, limit = 10, sortOrder = 'asc', search = '' } = req.query;
-        
+
         // Pagination calculation
         const pageNum = parseInt(page);
         const pageSize = parseInt(limit);
@@ -34,7 +31,7 @@ router.get('/all', async (req, res) => {
 
         // Search filter (using username as an example)
         const searchFilter = search
-            ? { username: new RegExp(search, 'i') }  // Case-insensitive search
+            ? { username: new RegExp(search, 'i') } // Case-insensitive search
             : {};
 
         // Fetch paginated, sorted, and filtered Saraha documents
@@ -56,7 +53,6 @@ router.get('/all', async (req, res) => {
         res.status(500).json({ message: 'Error fetching Saraha records', error });
     }
 });
-
 
 // Get one Saraha by ID
 router.get('/:id', async (req, res) => {
@@ -94,6 +90,16 @@ router.delete('/:id', async (req, res) => {
         res.status(200).json({ message: 'Saraha deleted successfully' });
     } catch (error) {
         res.status(500).json({ message: 'Error deleting Saraha', error });
+    }
+});
+
+// Delete all Saraha documents
+router.delete('/all', async (req, res) => {
+    try {
+        await Saraha.deleteMany({});
+        res.status(200).json({ message: 'All Saraha documents deleted successfully' });
+    } catch (error) {
+        res.status(500).json({ message: 'Error deleting all Saraha documents', error });
     }
 });
 
