@@ -83,24 +83,29 @@ router.put('/:id', async (req, res) => {
 // Delete Saraha by ID
 router.delete('/:id', async (req, res) => {
     try {
-        const deletedSaraha = await Saraha.findByIdAndDelete(req.params.id);
-        if (!deletedSaraha) {
-            return res.status(404).json({ message: 'Saraha not found' });
+
+        if(req.params.id=="all"){
+            try {
+                await Saraha.deleteMany({});
+                res.status(200).json({ message: 'All Saraha documents deleted successfully' });
+            } catch (error) {
+                res.status(500).json({ message: 'Error deleting all Saraha documents', error });
+            }
+
+        }else{
+
+            const deletedSaraha = await Saraha.findByIdAndDelete(req.params.id);
+            if (!deletedSaraha) {
+                return res.status(404).json({ message: 'Saraha not found' });
+            }
+            res.status(200).json({ message: 'Saraha deleted successfully' });
         }
-        res.status(200).json({ message: 'Saraha deleted successfully' });
+
     } catch (error) {
         res.status(500).json({ message: 'Error deleting Saraha', error });
     }
 });
 
-// Delete all Saraha documents
-router.delete('/all', async (req, res) => {
-    try {
-        await Saraha.deleteMany({});
-        res.status(200).json({ message: 'All Saraha documents deleted successfully' });
-    } catch (error) {
-        res.status(500).json({ message: 'Error deleting all Saraha documents', error });
-    }
-});
+
 
 module.exports = router;
