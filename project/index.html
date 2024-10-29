@@ -3,7 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Saraha</title>
+    <link rel="stylesheet" href="./js cdn/swal.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <script src="./js cdn/momentCdn.js"></script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
 
     <style>
@@ -14,13 +19,21 @@
         box-sizing: border-box;
     }
 
+    :root{
+        --main-div-bg-color: repeating-linear-gradient(90deg, rgba(140, 140, 140, 0.1) 0px, rgba(140, 140, 140, 0.1) 1px, transparent 1px, transparent 60px), repeating-linear-gradient(0deg, rgba(140, 140, 140, 0.1) 0px, rgba(140, 140, 140, 0.1) 1px, transparent 1px, transparent 60px), repeating-linear-gradient(0deg, rgba(140, 140, 140, 0.1) 0px, rgba(140, 140, 140, 0.1) 1px, transparent 1px, transparent 20px), repeating-linear-gradient(90deg, rgba(140, 140, 140, 0.1) 0px, rgba(140, 140, 140, 0.1) 1px, transparent 1px, transparent 20px), linear-gradient(90deg, hsl(208, 100%, 22%), hsl(208, 100%, 22%)) !important;
+    }
+
     body{
         background-image: linear-gradient(328deg, rgba(29, 29, 29, 0.05) 0%, rgba(29, 29, 29, 0.05) 25%, rgba(226, 226, 226, 0.05) 25%, rgba(226, 226, 226, 0.05) 50%, rgba(21, 21, 21, 0.05) 50%, rgba(21, 21, 21, 0.05) 75%, rgba(216, 216, 216, 0.05) 75%, rgba(216, 216, 216, 0.05) 100%), linear-gradient(172deg, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.05) 25%, rgba(108, 108, 108, 0.05) 25%, rgba(108, 108, 108, 0.05) 50%, rgba(21, 21, 21, 0.05) 50%, rgba(21, 21, 21, 0.05) 75%, rgba(236, 236, 236, 0.05) 75%, rgba(236, 236, 236, 0.05) 100%), linear-gradient(207deg, rgba(153, 153, 153, 0.05) 0%, rgba(153, 153, 153, 0.05) 25%, rgba(83, 83, 83, 0.05) 25%, rgba(83, 83, 83, 0.05) 50%, rgba(5, 5, 5, 0.05) 50%, rgba(5, 5, 5, 0.05) 75%, rgba(82, 82, 82, 0.05) 75%, rgba(82, 82, 82, 0.05) 100%), linear-gradient(297deg, rgba(26, 26, 26, 0.05) 0%, rgba(26, 26, 26, 0.05) 25%, rgba(223, 223, 223, 0.05) 25%, rgba(223, 223, 223, 0.05) 50%, rgba(232, 232, 232, 0.05) 50%, rgba(232, 232, 232, 0.05) 75%, rgba(153, 153, 153, 0.05) 75%, rgba(153, 153, 153, 0.05) 100%), linear-gradient(204deg, rgba(120, 120, 120, 0.05) 0%, rgba(120, 120, 120, 0.05) 25%, rgba(191, 191, 191, 0.05) 25%, rgba(191, 191, 191, 0.05) 50%, rgba(246, 246, 246, 0.05) 50%, rgba(246, 246, 246, 0.05) 75%, rgba(123, 123, 123, 0.05) 75%, rgba(123, 123, 123, 0.05) 100%), linear-gradient(90deg, rgb(4, 16, 87), rgb(21, 69, 155)) !important;
     }
 
-    .storeDiscription,
+    .sarahaDiscription,
     .theMainName,
-    .mainClassForSetColor{
+    .mainClassForSetColor,
+    .NumberOfSarahaMessagesDad,
+    .sarahaCard,
+    .loadMoreBtn,
+    .NumberOfSarahaMessagesShowForAllDad{
         background-image: repeating-linear-gradient(90deg, rgba(140, 140, 140, 0.1) 0px, rgba(140, 140, 140, 0.1) 1px, transparent 1px, transparent 60px), repeating-linear-gradient(0deg, rgba(140, 140, 140, 0.1) 0px, rgba(140, 140, 140, 0.1) 1px, transparent 1px, transparent 60px), repeating-linear-gradient(0deg, rgba(140, 140, 140, 0.1) 0px, rgba(140, 140, 140, 0.1) 1px, transparent 1px, transparent 20px), repeating-linear-gradient(90deg, rgba(140, 140, 140, 0.1) 0px, rgba(140, 140, 140, 0.1) 1px, transparent 1px, transparent 20px), linear-gradient(90deg, hsl(208, 100%, 22%), hsl(208, 100%, 22%)) !important;
         border: 2px solid whitesmoke !important;
         color: white !important;
@@ -30,7 +43,8 @@
         padding: 5px 10px;
     }
 
-    .sarahaInput{
+    .sarahaInput,
+    .sarahaInputUsername{
         background-image: repeating-linear-gradient(90deg, hsla(78,0%,63%,0.05) 0px, hsla(78,0%,63%,0.05) 1px,transparent 1px, transparent 104px),repeating-linear-gradient(0deg, hsla(78,0%,63%,0.05) 0px, hsla(78,0%,63%,0.05) 1px,transparent 1px, transparent 104px),repeating-linear-gradient(0deg, hsla(78,0%,63%,0.08) 0px, hsla(78,0%,63%,0.08) 1px,transparent 1px, transparent 26px),repeating-linear-gradient(90deg, hsla(78,0%,63%,0.08) 0px, hsla(78,0%,63%,0.08) 1px,transparent 1px, transparent 26px),linear-gradient(45deg, rgb(255,255,255),rgb(255,255,255));
         outline: 5px solid #ffffff !important;
         border: 5px solid #003c70 !important;
@@ -38,42 +52,1292 @@
 
 
     
+    .loadMoreBtn {
+        user-select: none;
+        font-size: 18px;
+        font-family: cairo;
+        cursor: pointer;
+        width: 120px;
+        border-radius: 10px;
+        color: #d5d5d5;
+        padding: 5px 0px;
+        font-weight: 600;
+        border: none;
+        min-width: 120px;
+    }
+
+
+    
+    .sarahaCard{
+        border: 2px solid whitesmoke;
+        color: white !important;
+        border-radius: 15px !important;
+        width: 95%;
+        max-width: 450px;
+        margin: 15px auto !important;
+    }
+
+
+    .sarahaCardReplyMessageDiv{
+        border: 2px solid whitesmoke;
+        color: black !important;
+        font-weight: bold;
+        border-radius: 0px 0px 15px 15px !important;
+        padding: 10px;
+        width: 80%;
+        max-width: 400px;
+        margin: -18px auto 15px !important;
+        background-image: repeating-linear-gradient(0deg, hsla(260,0%,67%,0.08) 0px, hsla(260,0%,67%,0.08) 1px,transparent 1px, transparent 11px),repeating-linear-gradient(90deg, hsla(260,0%,67%,0.08) 0px, hsla(260,0%,67%,0.08) 1px,transparent 1px, transparent 11px),linear-gradient(90deg, rgb(255,255,255),rgb(255,255,255));
+        text-align: center;
+    }
+
+
+    .theMainImg{
+        width: 100%;
+        border: 3px solid white;
+        border-radius: 50%;
+        box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    }
+
+    .swal-textarea{
+        font-family: 'Cairo', sans-serif;
+        font-weight: bold;
+    }
+
+
+
+    
     </style>
 </head>
 <body>
     <div class="mainDiv" style="max-width: 1000px; margin: 50px auto 0; height: 100vh; padding: 10px;">
+        
 
- 
+        
+
+
+
+        <div class="userEditDiv" style="display: none;justify-content: space-around;margin: 20px 0;"> 
+            <h1 class="editBtn" style=" margin: 0;font-family: cairo;font-weight: bold;color: #e8e8e8;background: var(--main-div-bg-color);border: 2px solid white;padding: 5px 20px;font-size: 20px;border-radius: 20pc;cursor: pointer;">تعديل</h1>
+            <h1 class="sarahaMassegesPageBtn" style=" margin: 0;font-family: cairo;font-weight: bold;color: #e8e8e8;background: var(--main-div-bg-color);border: 2px solid white;padding: 5px 20px;font-size: 20px;border-radius: 20pc;cursor: pointer;">الرسائل</h1>
+            <div class="logout" style="position: absolute; top: 10px; left: 10px;">
+                <a class="logout" style="padding: 10px; border-radius: 15px; display: block; justify-content: end; cursor: pointer; background: var(--main-div-bg-color); border: 2px solid white; color: white;" id="logOut-digital">
+                    <span class="logout" style="font-weight: bold; font-size:20px;">تسجيل الخروج</span>
+                    <i class="fas fa-sign-out-alt fa-fw logout" style="font-weight: bold; font-size:20px; margin-left: 10px; color: white;"></i>
+                </a>
+            </div>  
+        
+        </div>
+
 
         <div style="width: 150px; margin: auto;">
-            <img style="width: 100%; border-radius: 50%;" src="./img.jpg" alt="">
+            <img class="theMainImg" style="width: 100%; border-radius: 50%;" src="./imgs/person.webp" alt="">
         </div>
 
         <div style="margin: 10px auto 0px; display: flex; justify-content: center;">
-            <h1 class="theMainName" style="margin: 0; font-family: cairo; font-weight: bold; color: #e8e8e8;">م/ عمر عبد العزيز</h1>
+            <h1 class="theMainName" style="margin: 0; font-family: cairo; font-weight: bold; color: #e8e8e8;">اسم الشخص</h1>
         </div>
 
-        <div class="storeDiscriptionDiv" style="margin: 15px auto 0px; display: flex; justify-content: center;">
-          
-            <div class="storeDiscription" style=" text-align: center; font-size: 20px; font-weight: bold; width: 98%; max-width: 400px; border-radius: 15px; background-color: #1c1c1e; color: #e8e8e8; padding: 10px;"> اسال اي حاجه وان شاء الله هجاوبك </div>
+        <div class="sarahaDiscriptionDiv" style="margin: 15px auto 0px; display: flex; justify-content: center;">
+              
+            <div class="sarahaDiscription" style=" text-align: center; font-size: 20px; font-weight: bold; width: 98%; max-width: 400px; border-radius: 15px; background-color: #1c1c1e; color: #e8e8e8; padding: 10px;"> اكتب رساله مجهولة الهوية </div>
           
         </div>
 
         
-        <div class="sarahaInputDiv" style="margin: 15px auto 0px; display: flex; justify-content: center;">
-            
-            <textarea class="sarahaInput" dir="rtl" placeholder="اكتب رساله مجهولة الهوية واجعلها بنائه " style="width: 99%; min-width: 200px;  max-width: 420px;  min-height: 160px;    border: 3px solid black;    color: black !important;    border-radius: 15px !important;    font-family: cairo;    font-weight: bold;    font-size: 20px;    padding: 5px 10px;" name="" id=""></textarea>
+        
+        <div class="saraha-dad-div">
+
+
     
+            
+            <div class="sarahaInputDiv" style="margin: 15px auto 0px; display: flex; justify-content: center;">
+                
+                
+    
+                <div style="margin: 0px auto !important; width: 98%; max-width: 420px;">
+    
+                    
+                      <input class="sarahaInputUsername" dir="rtl" placeholder="اسمك المستعار" style="margin: 10px auto; width: 99%; max-width: 420px;  border: 3px solid black;    color: black !important;  border-radius: 15px !important;    font-family: cairo;    font-weight: bold;    font-size: 20px;    padding: 5px 10px;" type="text">
+                      
+                      <br>
+                      
+                      <textarea class="sarahaInput" dir="rtl" placeholder="اكتب رساله مجهولة الهوية واجعلها بنائه " style="margin: 10px auto; width: 99%;   max-width: 420px;  min-height: 160px;    border: 3px solid black;    color: black !important;    border-radius: 15px !important;    font-family: cairo;    font-weight: bold;    font-size: 20px;    padding: 5px 10px;" name="" id=""></textarea>
+                     
+    
+                </div>    
+    
+        
+            </div>
+    
+            <div style="margin: 15px auto 0px; display: flex; justify-content: center;">
+                
+                <button  style="min-width: fit-content; font-size: 18px; font-family: cairo; cursor: pointer; width: 120px; margin: 5px; border-radius: 10px; background: #0a1951; color: white; border: none; padding: 8px 10px; font-weight: 600; border: none;" class="sendSaraha mainClassForSetColor">ارسال</button>
+        
+            </div>
+
         </div>
 
-        <div style="margin: 15px auto 0px; display: flex; justify-content: center;">
-            
-            <button style="min-width:fit-content;font-size: 18px; font-family:cairo; cursor:pointer; width: 120px; margin: 5px; border-radius: 10px; background: #0a1951; color: white; border: none; padding: 8px 10px; font-weight: 600; border: none;" class="sendSaraha mainClassForSetColor">ارسال</button>
-    
+        <br>
+        <br>
+
+        <div style="display: flex; justify-content: center; margin: 30px auto 0;">
+            <bdi class="p-relative NumberOfSarahaMessagesShowForAllDad" style=" background-image: linear-gradient(310deg, #811a2f, #890808ac); text-align: center; color: #fff; padding: 5px; font-size: 20px; font-family: cairo; border-radius: 15px; font-weight: 900; text-align: center;">
+            رسائل مثبتة
+            <span style="text-align: center; background: #fff; color: black; padding: 0px 5px; font-size: 19px; font-family: sans-serif; border: none; border-radius: 10px; font-weight: 900;" class="NumberOfSarahaMessagesShowForAll">0</span>
+            </bdi>
         </div>
+
+        <div class="sarahaPinMessages" style="max-width: 1000px; margin: 10px auto 0;  padding: 10px;">
+
+
+        </div>
+
+
 
 
     </div>
+
+
+
+
+
+
+
+    <div class="sarahaCardsPage" style="display: none;">
+        
+        <div style="display: flex; justify-content: center; margin: 30px auto 0;">
+            <bdi class="p-relative NumberOfSarahaMessagesDad" style=" background-image: linear-gradient(310deg, #811a2f, #890808ac); text-align: center; color: #fff; padding: 5px; font-size: 20px; font-family: cairo; border-radius: 15px; font-weight: 900; text-align: center;">
+            عدد الرسائل
+            <span style="text-align: center; background: #fff; color: black; padding: 0px 5px; font-size: 19px; font-family: sans-serif; border: none; border-radius: 10px; font-weight: 900;" class="NumberOfSarahaMessages">0</span>
+            </bdi>
+        </div>
+
+
+
+        <div class="sarahaCardsDiv" style="max-width: 1000px; margin: 10px auto 0;  padding: 10px;">
+        
+
+        </div>
+        <div class="loadmoreDiv" style="display: none;justify-content: center;padding: 10px 0px;">
+            <button class="loadMoreBtn">Load More</button>
+            <div class="loaderIcon" style="display: none;">
+            <i style="font-size: 35px;padding: 5px; color: #d5d5d5;" class="fa-solid fa-spinner fa-spin"></i>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    
     
 </body>
+
+<script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-storage.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-database.js"></script>
+
+<script src="./js cdn/swalCdn.js"></script>
+
+<script type="module">
+
+import {docName,getAggregateFromServer,sum,onAuthStateChanged, getAuth, initializeApp,firebaseConfig, getFirestore,getCountFromServer, collection, query, where, getDocs,getDoc, setDoc, updateDoc, addDoc, doc,deleteDoc,onSnapshot,orderBy, limit,startAt,endAt  } from './firebase.js';
+
+
+// let mainHostUrl = "http://localhost:3001";
+let mainHostUrl = "https://saraha-5emt.onrender.com";
+let searchPage=1;
+
+let auth;
+let storage;
+
+
+
+
+
+
+/* start  check login and check store to edit */
+
+let queryUrl = window.location.search;
+let linkParams = new URLSearchParams(queryUrl);
+
+let userFromUrl = linkParams.get('user');
+let userMassageId = linkParams.get('userMassage');
+
+
+let mainToken = await localStorage.getItem(`${docName}_token`);
+
+let mainPersonData;
+let allSaraha;
+
+// console.log("userFromUrl",userFromUrl)
+// console.log("mainToken",mainToken)
+
+
+if(userFromUrl==null&&mainToken==null){
+
+    errorFun();
+
+
+}
+ else if(userFromUrl!==null&&mainToken==null){
+
+
+    const options = {
+        method: 'GET',
+        headers: { 'User-Agent': 'insomnia/9.3.1' }
+    };
+
+    fetch(`${mainHostUrl}/auth/account/${userFromUrl}`, options)
+    .then(response => {
+        // Check if the response status is 404 (or any other non-OK status)
+        if (!response.ok) { // response.ok is true if status is 2xx, false otherwise
+            
+            errorFun();
+            if (response.status === 404) {
+                throw new Error('404 - User not found');
+            } else {
+                throw new Error(`${response.status} - ${response.statusText}`);
+            }
+
+           
+        }
+        return response.json(); // Continue to parse JSON if status is OK (2xx)
+    })
+    .then(data => {
+
+        let User_Data=data.account;
+        // console.log(User_Data)
+
+        document.querySelector(".theMainImg").src=User_Data.img||"./imgs/person.webp";
+        document.querySelector(".theMainName").textContent=User_Data.username;
+        showPinMessages(User_Data);
+        // console.log(data.account); // Process the response data here
+
+
+    })
+    .catch(err => {
+        console.error(err.message); // Log the error
+    });
+
+
+
+}
+else if (userFromUrl!==null&&mainToken!==null){
+
+
+
+    firebase.initializeApp(firebaseConfig);
+    const app = initializeApp(firebaseConfig);
+    auth = getAuth(app);
+
+
+    onAuthStateChanged(auth,async (user) => {
+      if (user) {
+        // console.log("yes")
+        
+      } else {
+        // console.log("no")
+      }
+    });
+
+
+    const db = getFirestore(app);
+
+    storage = firebase.storage();
+    /**/
+
+    let X;
+
+    async function getCit(db,X) {
+    const citiesCol = collection(db,`${X}`);
+    const citySnapshot = await getDocs(citiesCol);
+    const cityList = citySnapshot.docs.map(doc => doc.data());
+    return cityList;
+    };
+
+
+
+
+    /*start login cods*/
+
+
+
+    /* 02 start get User Data With Id */
+
+    async function getUserDataWithId(uid){
+        let userData;
+
+        const options = {method: 'GET', headers: {'User-Agent': 'insomnia/9.3.1'}};
+
+        await fetch(`${mainHostUrl}/auth/account/${uid}`, options)
+        .then(response => {
+            // Check if the status code is 404 or another error
+            if (!response.ok) { // `ok` is true for 2xx status codes, false otherwise
+                if (response.status === 404) {
+                    throw new Error('404 - User not found');
+                } else {
+                    throw new Error(`${response.status} - ${response.statusText}`);
+                }
+            }
+            return response.json(); // Parse JSON if the status is 2xx
+        })
+        .then(response => {
+            userData=response.account;
+
+        })
+        .catch(err => console.error(err));
+
+    return userData;
+    }
+
+
+    /* 02 end get User Data With Id */
+
+
+
+    /* 03 start check and get user doc */
+
+    
+
+
+    // console.log(mainToken);
+
+    /*************** user is sign in already so get maintoken and user id info *****************/ 
+
+    if(mainToken!==null&&mainToken!==""){
+        mainToken=JSON.parse(mainToken);
+        let options = {method: 'GET', headers: {'User-Agent': 'insomnia/9.3.2'}};
+
+        await fetch(`${mainHostUrl}/token/checkToken/${mainToken}`, options)
+        .then(response => response.json())
+        .then(response => {
+            // console.log(response)
+
+            if(!response.status){
+            localStorage.setItem(`${docName}_token`,null);
+            location.href="./login/login.html"
+            }else{
+                mainToken = response.token;
+            }
+
+        })
+        .catch(err => console.error(err));
+
+        }else{
+            localStorage.setItem(`${docName}_token`,null);
+            location.href="./login/login.html"
+        }
+
+
+
+        /*************** user is sign in already and open her page to edit  *****************/ 
+
+        if(userFromUrl==mainToken.accountId){
+
+            await getUserDataWithId(mainToken.accountId).then(user=>{
+               
+                mainPersonData=user;
+                document.querySelector(".userEditDiv").style.display="flex";
+       
+                
+                document.querySelector(".theMainImg").src=user.img||"./imgs/person.webp";
+                document.querySelector(".theMainName").textContent=user.username;
+
+                showPinMessages(user);
+
+            });
+
+        }else{
+
+            /*************** user is sign in already and open page for someone not her page  *****************/ 
+            await getUserDataWithId(userFromUrl).then(user=>{
+                
+              
+                if(user==undefined){
+                    errorFun();
+                }else{
+                    document.querySelector(".theMainImg").src=user.img||"./imgs/person.webp";
+                    document.querySelector(".theMainName").textContent=user.username;
+                    showPinMessages(user);
+                }
+            })
+
+        }
+
+
+
+
+        /*end login cods*/
+
+
+
+
+}else if(userMassageId){
+   
+    document.querySelector(".mainDiv").style.display="none";
+        document.querySelector(".sarahaCardsPage").style.display="block";
+
+      
+        mainToken = mainToken.replace(/"/g, '');
+        mainToken=mainToken.trim();
+
+        const options = {method: 'GET', headers: {
+            'User-Agent': 'insomnia/9.3.3',
+            authorization: mainToken,
+        }};
+
+        fetch(`${mainHostUrl}/saraha/all?page=${searchPage}&limit=5&sortOrder=desc`, options)
+        .then(response => response.json())
+        .then(async response => {
+            // console.log(response)
+
+            document.querySelector(".NumberOfSarahaMessages").textContent=response.totalCount;
+
+
+            allSaraha=response.sarahaDocs||[];
+
+            await showAllSaraha(allSaraha,".sarahaCardsDiv");
+
+            document.querySelector(".loadmoreDiv").style.display="flex";
+
+            searchPage++;
+            
+    })
+    .catch(err => console.error(err));
+
+
+
+
+
+
+
+
+
+
+
+}else{
+    errorFun()
+}
+
+
+
+
+function errorFun(){
+    document.querySelector(".theMainName").textContent="Error"
+    document.querySelector(".sarahaDiscription").textContent="User not found"
+    document.querySelector(".saraha-dad-div").remove();
+}
+
+
+
+
+
+/* start  check login and check store to edit */
+
+let queryString = window.location.search;
+let urlParams = new URLSearchParams(queryString);
+let showParam = urlParams.get('show');
+
+
+if(showParam!==null){
+    if(showParam=="all"){
+        
+
+        // document.querySelector(".mainDiv").style.display="none";
+        // document.querySelector(".sarahaCardsPage").style.display="block";
+
+
+        // const options = {method: 'GET', headers: {'User-Agent': 'insomnia/9.3.3'}};
+
+        // fetch(`https://saraha-repo.onrender.com/saraha/all?page=${searchPage}&limit=5&sortOrder=desc`, options)
+        // .then(response => response.json())
+        // .then(async response => {
+        //     console.log(response)
+
+        //     document.querySelector(".NumberOfSarahaMessages").textContent=response.totalCount;
+
+
+        //     let allSaraha=response.sarahaDocs||[];
+
+        //     await showAllSaraha(allSaraha,".sarahaCardsDiv");
+
+        //     document.querySelector(".loadmoreDiv").style.display="flex";
+
+        //     searchPage++;
+            
+        // })
+        // .catch(err => console.error(err));
+
+    }
+}else{
+
+
+document.querySelector(".sendSaraha").addEventListener("click",async()=>{
+
+
+    let saraha=document.querySelector(".sarahaInput").value;
+    let username=document.querySelector(".sarahaInputUsername").value;
+
+    if(username.trim()==""){
+        username="مجهول الهوية";
+    }
+
+    if(saraha.trim()!==""){
+
+        let randomOrderNumber = (Math.random()*1000000).toFixed();
+
+        let date = await showDate(); // Make sure showDate() returns a valid date format
+
+        let requestBody = {
+            uid: randomOrderNumber,
+            username: username||"مجهول الهوية", // Directly assigning a string
+            message: saraha,
+            sentTo: userFromUrl,
+            date: date, // Ensure date is a valid string or formatted correctly
+            numberToOrderBy: Date.now()
+        };
+
+
+
+        let options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'User-Agent': 'insomnia/9.3.3'
+            },
+            body: JSON.stringify(requestBody) // Use JSON.stringify to convert to a JSON string
+        };
+
+        fetch(`${mainHostUrl}/saraha/add`, options)
+        .then(response => response.json())
+        .then(response => {
+            Swal.fire("تم الارسال","","success")
+            // console.log(response)
+            document.querySelector(".sarahaInput").value="";
+        })
+        .catch(err => console.error(err));
+        
+
+    }
+
+})
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*start of window event click*/
+window.addEventListener("click",async(e)=>{
+
+
+    if([...e.target.classList].includes("logout")){
+        localStorage.setItem(`${docName}_token`,"");
+        location.href="./login/login.html"
+    }
+
+
+
+    if([...e.target.classList].includes("showMessageForAll")){
+
+
+        let icon = e.target;
+
+        let messageId=e.target.dataset.id;
+        let messageData=allSaraha.find(el=>el._id==`${messageId}`);
+
+        // console.log(productData)
+        let title = `هل تريد ${messageData.showMessageForAll?"اخفاء هذه الرسالة من الصفحة الرئيسية":"اظهار هذه الرسالة في الصفحة الرئيسية"}؟`;
+
+        Swal.fire({
+            title: `${title}`,
+            text: "",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes'
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                Swal.fire({
+                title: 'Please Wait!',
+                didOpen: () => {
+                    Swal.showLoading()
+                }
+                });
+
+                let newShowMessageForAll = (messageData.showMessageForAll);
+                newShowMessageForAll=!newShowMessageForAll;
+            
+
+                let options = {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'User-Agent': 'insomnia/10.1.1',
+                        authorization: `${mainToken}`
+                    },
+                    body: JSON.stringify({ showMessageForAll: newShowMessageForAll }) // Proper JSON structure
+                };
+
+                fetch(`${mainHostUrl}/saraha/${messageId}`, options)
+                    .then(response => response.json())
+                    .then(async response => {
+                   
+                        messageData.showMessageForAll=newShowMessageForAll;
+                        Swal.fire('Saved!', '', 'success');
+                        document.querySelector(".sarahaCardsDiv").innerHTML="";
+                        await showAllSaraha(allSaraha,".sarahaCardsDiv");
+                    })
+                    .catch(err => {
+                        console.error(err);
+                        Swal.fire('Error', 'There was an error updating the message.', 'error');
+                    });
+
+
+            }
+            })
+        };
+
+        /* end Result-Hidden btn*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    if([...e.target.classList].includes("replyMessage")){
+        let messageId = e.target.dataset.id; // Get the message ID
+        let message = allSaraha.find(ee => ee._id == messageId);
+
+       
+
+        Swal.fire({
+            title: 'Reply Message',
+            input: 'textarea', // Set input type to textarea
+            inputValue: `${message.replyMessage || ""}`, // Set the current message as the default value
+            showCancelButton: true,
+            confirmButtonText: 'Save',
+            cancelButtonText: 'Cancel',
+            customClass: {
+                input: 'swal-textarea' // Add custom class to textarea
+            },
+            inputAttributes: {
+                dir: 'auto' // Set direction to auto
+            },
+            inputValidator: (value) => {
+                if (!value) {
+                    return 'You need to write something!';
+                }
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const newReplyMessage = result.value; // Get the input value
+
+                const options = {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'User-Agent': 'insomnia/10.1.1',
+                        authorization: `${mainToken}`
+                    },
+                    body: JSON.stringify({ replyMessage: newReplyMessage }) // Proper JSON structure
+                };
+
+                fetch(`${mainHostUrl}/saraha/${messageId}`, options)
+                    .then(response => response.json())
+                    .then(async response => {
+                        // console.log(response);
+                        message.replyMessage=newReplyMessage;
+                        Swal.fire('Saved!', 'Your message has been updated.', 'success');
+                        document.querySelector(".sarahaCardsDiv").innerHTML="";
+                        await showAllSaraha(allSaraha,".sarahaCardsDiv");
+                    })
+                    .catch(err => {
+                        console.error(err);
+                        Swal.fire('Error', 'There was an error updating the message.', 'error');
+                    });
+            }
+        });
+
+
+
+    }
+
+
+
+
+    if([...e.target.classList].includes("removeMessage")){
+
+        // console.log(e.target.dataset.id);
+        
+        Swal.fire({
+            title: 'Are you want to delet it?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+
+                let messageId=e.target.dataset.id;
+
+                
+    
+                
+                // await showAllSaraha(allSaraha,".sarahaCardsDiv");   
+
+                let options = {
+                    method: 'DELETE', 
+                    headers: {
+                        'User-Agent': 'insomnia/9.3.3',
+                        authorization: `${mainToken}`
+                    }
+                };
+
+                fetch(`${mainHostUrl}/saraha/${messageId}`, options)
+                .then(response => response.json())
+                .then(async response => {
+                   
+                    Swal.fire(
+                        'Deleted!',
+                        'Your order has been deleted.',
+                        'success'
+                    );
+                    allSaraha = allSaraha.filter(obj => obj._id !== messageId);
+                    
+                    document.querySelector(".sarahaCardsDiv").innerHTML="";
+                    await showAllSaraha(allSaraha,".sarahaCardsDiv");
+                    document.querySelector(".NumberOfSarahaMessages").textContent=allSaraha.length;
+
+                })
+                .catch(err => console.error(err));
+      
+
+            }
+        })
+
+        
+    }
+
+
+
+
+
+
+
+
+    if([...e.target.classList].includes("sarahaMassegesPageBtn")){
+
+        location.href=location.origin+location.pathname+"?userMassage="+mainToken.accountId;
+    }
+
+    
+
+    if([...e.target.classList].includes("saveEdit")){
+
+     
+        
+ 
+    
+        let ref = firebase.storage().ref();
+        let file = document.querySelector("#imageInput").files[0];
+        let NewUsername = document.querySelector("#usernameInput").value;
+
+        NewUsername=NewUsername.trim();
+        if(NewUsername==""){
+            NewUsername="مجهول";
+        }
+
+       
+
+        Swal.fire({
+            title: 'Please Wait!',
+            didOpen: () => {
+                Swal.showLoading()
+            }
+        });
+
+
+        onAuthStateChanged(auth, user => {
+            if (user) {
+                // console.log("Authenticated user:", user);
+
+
+                if(file!==undefined){
+
+                        
+                    // Proceed with file upload
+                    let name = +new Date() + "-" + file.name;
+                    let metadata = {
+                        contentType: file.type
+                    };
+                
+
+                    const storageRef = firebase.storage().ref(user.uid).child(name); // Get a reference to the storage location
+                    storageRef.put(file, metadata) // Upload the file
+                    .then(async snapshot => snapshot.ref.getDownloadURL())
+                    .then(async url => {
+                        // The file is uploaded, and you now have the download URL
+                        // console.log('File available at', url);
+
+                        const options = {
+                            method: 'PATCH',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'User-Agent': 'insomnia/9.2.0',
+                                authorization: mainToken._id,
+                            },
+                            body: JSON.stringify({
+                                username: NewUsername,
+                                img: url
+                            })
+                        };
+
+                        fetch(`${mainHostUrl}/auth/account/${userFromUrl}`, options)
+                        .then(response => response.json())
+                        .then(response => {
+                            Swal.fire("Done", "", "success");
+                            document.querySelector(".theMainImg").src = url;
+                            document.querySelector(".theMainName").textContent = NewUsername;
+                            mainPersonData.img=url;
+                            mainPersonData.username=NewUsername;
+                        })
+                        .catch(err => console.error(err));
+
+                    }).catch(error => {
+                        console.error('Upload failed:', error);
+                    });
+
+                }else{
+                    
+                    const options = {
+                        method: 'PATCH',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'User-Agent': 'insomnia/9.2.0',
+                            authorization: mainToken._id,
+                        },
+                        body: JSON.stringify({
+                            username: NewUsername,
+                        })
+                    };
+
+                    fetch(`${mainHostUrl}/auth/account/${userFromUrl}`, options)
+                    .then(response => response.json())
+                    .then(response => {
+                        Swal.fire("Done", "", "success");
+                        document.querySelector(".theMainName").textContent = NewUsername;
+                        mainPersonData.username=NewUsername;
+                    })
+                    .catch(err => console.error(err));
+                }
+
+            } else {
+                console.error('User is not authenticated. Please log in to upload files.');
+            }
+        });
+
+  
+
+
+    }
+
+
+    if([...e.target.classList].includes("editBtn")){
+        
+        Swal.fire({
+            title: ' تعديل  ',
+            html: `
+            
+            <div class="mainForm" style="overflow-y: hidden; overflow-c: scroll; font-size: 17px!important; font-family: 'Cairo', sans-serif; font-weight: bold!important;">
+
+
+                <div style=" display: flex; justify-content: center;">
+                
+                    <input style="display: none;" type="file" id="imageInput" accept="image/*">
+                    <label style="display: block; margin: 0px; font-family: cairo; font-weight: bold; color: rgb(232, 232, 232); background: var(--main-div-bg-color); border: 2px solid white; padding: 5px 20px; font-size: 20px; border-radius: 20pc; cursor: pointer;" for="imageInput">تغيير الصوره</label>
+                
+                </div>
+                <br>
+                <label for="usernameInput">تغيير الاسم</label>
+                <input dir="auto" style="    font-family: cairo; margin: 10px; font-size: 20px; font-weight: bold; border: 2px solid; border-radius: 9px; padding: 5px 10px;" type="text" id="usernameInput" value="${mainPersonData.username}" >
+                
+                <br>
+
+                <button style="font-size: 18px; font-family:cairo; cursor:pointer; width: 120px; margin: 5px; border-radius: 10px; background: green; color: white; padding: 5px 0px; font-weight: 600; border: none;" class="saveEdit">حفظ </button>
+
+            </div>
+
+            `,
+            showConfirmButton: false
+        });
+
+  
+
+    }
+
+
+    if([...e.target.classList].includes("loadMoreBtn")){
+
+        const options = {method: 'GET', headers: {
+            'User-Agent': 'insomnia/9.3.3',
+            authorization: mainToken,
+        }};
+
+
+        fetch(`${mainHostUrl}/saraha/all?page=${searchPage}&limit=5&sortOrder=desc`, options)
+            .then(response => response.json())
+            .then(async response => {
+                // console.log(response.sarahaDocs)
+
+                allSaraha=response.sarahaDocs||[];
+
+                await showAllSaraha(allSaraha,".sarahaCardsDiv");
+
+                searchPage++;
+                
+        })
+        .catch(err => console.error(err));
+        
+
+    }
+
+
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* start function to show all saraha */
+
+function showAllSaraha(allSaraha,div){
+
+
+ 
+
+
+allSaraha.forEach(e=>{
+ 
+  document.querySelector(div).innerHTML+=`
+
+  
+  
+  <div data-id="${e._id}">
+   
+    <div class="sarahaCard" style="position: relative; background-color: #1c1c1e;color: #fff; padding: 15px; border-radius: 15px; margin: 10px 0;"  data-id="${e._id}">
+
+        <div style="display: flex; justify-content: center;">
+          <bdi class="sarahaName" style="font-size: 20px; font-family: cairo;">${e.username}</bdi>
+        </div>
+    
+        <div style="display: flex; justify-content: center;">
+          <bdi class="sarahaMessage" style="font-size: 20px; font-family: cairo;">${e.message}</bdi>
+        </div>
+    
+        <div style=" position: absolute; right: 6px; top: 0;">
+            <i title="حذف الرساله" data-id="${e._id}" class="fa-solid fa-trash removeMessage" style="font-size: 20px; color: white; background: darkred; border: 2px solid white; border-radius: 50%; padding: 4px 5px; cursor: pointer;"></i>
+        </div>
+    
+        <div style=" position: absolute; left: 6px; top: 0;">
+            <i title="اخفاء" data-id="${e._id}"  class="fa-solid ${e.showMessageForAll?"fa-eye":"fa-eye-slash"} showMessageForAll" style="font-size: 20px; color: white; background: black; border: 2px solid white; border-radius: 50%; padding: 4px 5px; cursor: pointer;"></i>
+        </div>
+    
+        <div style=" position: absolute; right: 6px; bottom: 0;">
+            <i title="رد علي الرسالة" data-id="${e._id}"  class="fa-solid fa-reply replyMessage" style="font-size: 20px; color: white; background: #003c70; border: 2px solid white; border-radius: 50%; padding: 4px 5px; cursor: pointer;"></i>
+        </div>
+    
+        <bdi style="position: absolute; bottom: 1px; left: 10px; font-size: 15px;  font-family: cairo;" class="orderDate"> ${getDiffDate(e.date)} </bdi>
+      
+    </div>
+
+    <div class="sarahaCardReplyMessageDiv" style="${(e.replyMessage!==undefined&&e.replyMessage.trim()!=="")?``:`display: none;`}">
+        
+        <bdi dir="auto" style="font-size: 20px; font-family: cairo;">${e.replyMessage}</bdi>
+        
+    </div>
+
+
+
+  </div>  
+
+
+  `;
+})
+
+
+
+};
+
+
+
+/* end function to show  all saraha  */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* start function show all saraha pins messages */
+
+
+async function showPinMessages(user){
+
+    // console.log(user)
+
+    const options = {
+        method: 'POST',  // Change to POST
+        headers: { 'Content-Type': 'application/json', 'User-Agent': 'insomnia/9.3.3' },
+        body: JSON.stringify({ accountId: user.uid })
+    };
+
+    fetch(`${mainHostUrl}/saraha/allpins?page=1&limit=30&sortOrder=desc`, options)
+    .then(response => response.json())
+    .then(response => {
+        // console.log(response.sarahaDocs);
+
+
+        let sarahaDocs = response.sarahaDocs;
+        document.querySelector(".NumberOfSarahaMessagesShowForAll").textContent=sarahaDocs.length
+
+        sarahaDocs.forEach(e=>{
+            
+            document.querySelector(".sarahaPinMessages").innerHTML+=`
+
+            
+            
+            <div data-id="${e._id}">
+            
+            <div class="sarahaCard" style="position: relative; background-color: #1c1c1e;color: #fff; padding: 15px; border-radius: 15px; margin: 10px 0;"  data-id="${e._id}">
+
+                <div style="display: flex; justify-content: center;">
+                    <bdi class="sarahaName" style="font-size: 20px; font-family: cairo;">${e.username}</bdi>
+                </div>
+            
+                <div style="display: flex; justify-content: center;">
+                    <bdi class="sarahaMessage" style="font-size: 20px; font-family: cairo;">${e.message}</bdi>
+                </div>
+            
+
+                <bdi style="position: absolute; bottom: 1px; left: 10px; font-size: 15px;  font-family: cairo;" class="orderDate"> ${getDiffDate(e.date)} </bdi>
+                
+            </div>
+
+            <div class="sarahaCardReplyMessageDiv" style="${(e.replyMessage!==undefined&&e.replyMessage.trim()!=="")?``:`display: none;`}">
+                
+                <bdi dir="auto" style="font-size: 20px; font-family: cairo;">${e.replyMessage}</bdi>
+                
+            </div>
+
+
+
+            </div>  
+
+
+            `;
+        })
+
+
+
+
+    })
+    .catch(err => console.error(err));
+
+
+}
+
+
+/* end function show all saraha pins messages */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* start function to get data now */
+function showDate(){
+  
+  const d = new Date();
+  
+  let year = d.getFullYear();
+  let month = d.getMonth();
+  let day = d.getDate();
+  let hour = d.getHours();
+  let mint = d.getMinutes();
+  
+  if(mint<10){
+    mint=`0${mint}`
+  }
+  
+  let dateNow;
+
+  console.log(hour)
+
+  if (hour>=12){
+    
+    dateNow= `
+      ${year}/${month+1}/${day} ${hour-12}:${mint} PM
+      `;
+
+      dateNow=dateNow.trim();
+
+  } else if (hour<=11){
+    
+      dateNow = `
+      
+      ${year}/${month+1}/${day} ${hour}:${mint} AM
+      
+      `;
+
+      dateNow=dateNow.trim();
+  }
+
+//   console.log(dateNow.trim())
+  return `${dateNow.trim()}`;
+}
+
+/* end function to get data now */
+
+
+
+
+/* start function to get differnce between date*/
+function getDiffDate(oldDate){
+        
+        var starts = moment(`${oldDate}`);
+        var ends   = moment();
+    
+        var duration = moment.duration(ends.diff(starts));
+    
+        // with ###moment precise date range plugin###
+        // it will tell you the difference in human terms
+    
+        var diff = moment.preciseDiff(starts, ends, true); 
+        // example: { "years": 2, "months": 7, "days": 0, "hours": 6, "minutes": 29, "seconds": 17, "firstDateWasLater":  false }
+    
+    
+        // or as string:
+        var diffHuman = moment.preciseDiff(starts, ends);
+        // example: 2 years 7 months 6 hours 29 minutes 17 seconds
+    
+        let diffDate=diff;
+    
+        if(diffDate.years!==0){
+            diffDate={
+                "diffDateNum": diffDate.years,
+                "diffDateName": "سنة",
+            };
+        } else if(diff.months!==0){
+            diffDate={
+                "diffDateNum": diffDate.months,
+                "diffDateName": "شهر",
+            };
+        } else if(diff.days!==0){
+            diffDate={
+                "diffDateNum": diffDate.days,
+                "diffDateName": "يوم",
+            };
+        } else if(diff.hours!==0){
+            diffDate={
+                "diffDateNum": diffDate.hours,
+                "diffDateName": "ساعة",
+            };
+        } else if(diff.minutes!==0){
+            diffDate={
+                "diffDateNum": diffDate.minutes,
+                "diffDateName": "دقيقة",
+            };
+        } else {
+            diffDate={
+                "diffDateNum": 0,
+                "diffDateName": "الان",
+            };
+        }
+    
+        let stringDiffDate = `منذ ${diffDate.diffDateNum + " " + diffDate.diffDateName}`;
+        // منذ 1 سنة
+    
+        if(diffDate.diffDateName=="الان"){
+          stringDiffDate="الان";
+        }
+        
+        // diffDate => json like {diffDateNum: 1, diffDateName: 'سنة'}
+    
+        return stringDiffDate;
+    }
+    
+    // console.log(getDiffDate("2022/1/1 => 5:55 PM"));
+    
+    /* end function to get differnce between date */
+    
+    
+
+
+</script>
+
 </html>
