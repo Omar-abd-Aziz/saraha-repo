@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const http = require('http');
+const WebSocket = require('ws');
 const cors = require('cors');
 
 const app = express();
@@ -27,10 +28,14 @@ mongoose.connect('mongodb+srv://omarvenom22:JPZ4jK7U8zECbbxB@cluster0.p3oak.mong
 // Routes
 
 
+const accountRouter = require('./routes/auth');
+app.use('/auth', accountRouter);
+
+const tokenRouter = require('./routes/token');
+app.use('/token', tokenRouter);
+
 const sarahaRoutes = require('./routes/Saraha');
 app.use('/saraha', sarahaRoutes);
-
-
 
 
 
